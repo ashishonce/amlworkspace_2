@@ -15,5 +15,4 @@ branding:
 runs:
   using: "docker"
   image: "Dockerfile"
-  args:
-    - ${{ -v /home/.azure:/root/.azure }}
+  args: -v /home/.azure:/root/.azure
