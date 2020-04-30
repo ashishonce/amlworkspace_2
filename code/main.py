@@ -73,6 +73,36 @@ def main():
     except AdalError as exception:
         print(f"::error::Active Directory Authentication Library Error: {exception}")
         raise AdalError
+    except ProjectSystemException as exception:
+        print(f"::debug::Loading existing Workspace failed: {exception}")
+        if parameters.get("create_workspace", False):
+            try:
+                print("::debug::Creating new Workspace")
+                ws = Workspace.create(
+                    name=parameters.get("name", repository_name),
+                    subscription_id=azure_credentials.get("subscriptionId", ""),
+                    resource_group=parameters.get("resource_group", repository_name),
+                    location=parameters.get("location", None),
+                    create_resource_group=parameters.get("create_resource_group", True),
+                    sku=parameters.get("sku", "basic"),
+                    friendly_name=parameters.get("friendly_name", None),
+                    storage_account=parameters.get("storage_account", None),
+                    key_vault=parameters.get("key_vault", None),
+                    app_insights=parameters.get("app_insights", None),
+                    container_registry=parameters.get("container_registry", None),
+                    cmk_keyvault=parameters.get("cmk_key_vault", None),
+                    resource_cmk_uri=parameters.get("resource_cmk_uri", None),
+                    hbi_workspace=parameters.get("hbi_workspace", None),
+                    auth=sp_auth,
+                    exist_ok=True,
+                    show_output=True
+                )
+            except WorkspaceException as exception:
+                print(f"::error::Creating new Workspace failed: {exception}")
+                raise AMLConfigurationException(f"Creating new Workspace failed with 'WorkspaceException': {exception}.")
+        else:
+            print(f"::error::Loading existing Workspace failed with 'WorkspaceException' and new Workspace will not be created because parameter 'create_workspace' was not defined or set to false in your parameter file: {exception}")
+            raise AMLConfigurationException("Loading existing Workspace failed with 'WorkspaceException' and new Workspace will not be created because parameter 'create_workspace' was not defined or set to false in your parameter file.")
     except WorkspaceException as exception:
         print(f"::debug::Loading existing Workspace failed: {exception}")
         if parameters.get("create_workspace", False):
