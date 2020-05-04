@@ -13,6 +13,7 @@ from utils import AMLConfigurationException, required_parameters_provided, mask_
 def main():
     # Loading input values
     print("::debug::Loading input values")
+    print(" this is the branch repo samplerest")
     parameters_file = os.environ.get("INPUT_PARAMETERS_FILE", default="workspace.json")
     azure_credentials = os.environ.get("INPUT_AZURE_CREDENTIALS", default="{}")
     try:
