@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Self test
         id: selftest
-        uses: ashishonce/amlworkspace_2@sampleprtest
+        uses: ./
         with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
         continue-on-error: true
