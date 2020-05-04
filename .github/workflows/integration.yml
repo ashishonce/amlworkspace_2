@@ -4,9 +4,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Check Out Repository
+        id: checkout_repository
+        uses: actions/checkout@master
+        with:
+          ref: ${{github.ref}}
+
       - name: Self test
         id: selftest
-        uses: ./../
+        uses: ./
         with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
         continue-on-error: true
