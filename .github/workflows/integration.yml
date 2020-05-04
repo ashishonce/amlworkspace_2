@@ -1,0 +1,16 @@
+name: Integration Test
+on: [push , pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Repository
+        id: checkout_repository
+        uses: actions/checkout@master
+      
+      - name: Self test
+        id: selftest
+        uses: ashishonce/amlworkspace_2@master
+        with:
+          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+        continue-on-error: true
