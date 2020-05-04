@@ -4,12 +4,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repository
-        id: checkout_repository
-        uses: actions/checkout@master
-        with:
-          ref: ${{github.ref}}
-      
       - name: Self test
         id: selftest
         uses: ashishonce/amlworkspace_2@master
