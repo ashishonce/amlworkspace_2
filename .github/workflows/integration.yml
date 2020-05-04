@@ -8,7 +8,7 @@ jobs:
         id: checkout_repository
         uses: actions/checkout@master
         with:
-          ref: ${GITHUB_REF##*/}
+          ref: ${{github.ref}}
       
       - name: Self test
         id: selftest
