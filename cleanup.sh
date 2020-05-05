@@ -1,10 +1,11 @@
 #!/bin/sh
-sid=$1
+#sid=$1
 #extract the resource group
 rg=$(jq .resource_group .cloud/.azure/test/workspace.json)
 rg=ashkuma_devtesting
 ws=ashkumamlworkspace
-echo $sid
+jq -n "$1" | jq '.clientId'
+#echo $sid
 echo $rg
 echo $ws
 # az extension add -n azure-cli-ml
