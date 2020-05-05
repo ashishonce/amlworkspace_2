@@ -24,7 +24,7 @@ jobs:
       - uses: jwsi/secret-parser@v1
         with:
           filename: test.json
-          secret-name: important_value
+          secret-name: SAMPLE_CREDS
           secret-value: ${{ secrets.SAMPLE_CREDS }}
       - name: secretBash
         run: |
