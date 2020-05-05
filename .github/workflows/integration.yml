@@ -10,18 +10,26 @@ jobs:
         with:
           ref: ${{github.ref}}
 
-      - uses: actions/setup-node@v1
+      # - uses: actions/setup-node@v1
+      #   with:
+      #     node-version: "12.x"
+      # # Install dependencies
+      # - run: npm install @actions/core
+      # - run: npm install @actions/github
+      # # Run pr-comment.js with Node and pass the authentication token 
+      # - run: node index.js
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     CREDS: ${{ secrets.SAMPLE_CREDS }}
+      - uses: jwsi/secret-parser@v1
         with:
-          node-version: "12.x"
-      # Install dependencies
-      - run: npm install @actions/core
-      - run: npm install @actions/github
-      # Run pr-comment.js with Node and pass the authentication token 
-      - run: node index.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CREDS: ${{ secrets.SAMPLE_CREDS }}
-
+          filename: test.json
+          secret-name: important_value
+          secret-value: ${{ secrets.SAMPLE_CREDS }}
+      - name: secretBash
+        run: |
+          jq .important_value test.json
+      
       # connect ws
       # - name: Connect Workspace
       #   id: ws_connect
