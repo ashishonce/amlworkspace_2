@@ -7,7 +7,7 @@ ws2=ashkumamlworkspace
 echo $ws
 echo $rg
 echo $1
-sid=jq -n "$1" | jq ."subscriptionId"
+sid=$(jq -n "$1" | jq ."subscriptionId")
 echo $sid
 az extension add -n azure-cli-ml
 az ml workspace delete --subscription $sid --resource-group $rg --workspace-name $ws
