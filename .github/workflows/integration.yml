@@ -32,4 +32,4 @@ jobs:
           inlineScript: |
             chmod +x $GITHUB_WORKSPACE/cleanup.sh
             echo "$SUPER_SECRET"
-            # $GITHUB_WORKSPACE/cleanup.sh "$SUPER_SECRET"
+            $GITHUB_WORKSPACE/cleanup.sh "$SUPER_SECRET"
