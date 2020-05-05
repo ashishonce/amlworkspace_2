@@ -1,12 +1,12 @@
 #!/bin/sh
-#sid=$1
 #extract the resource group
-# rg=$(jq .resource_group .cloud/.azure/test/workspace.json)
+#rg=$(jq .resource_group .cloud/.azure/test/workspace.json)
 rg=ashkuma_devtesting
 ws=ashkumamlworkspace
 echo $ws
 echo $rg
-echo "$1"
+echo $1
+IFS=','
 jq -n "$1" | jq ."clientId"
 # dt="$(echo "$1"|tr -d '\r')"
 # dt="$(echo "$dt"|tr -d '\n')"
