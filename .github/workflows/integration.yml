@@ -26,7 +26,7 @@ jobs:
       - name: Azure CLI script
         uses: azure/CLI@v1
         env:
-          SUPER_SECRET: ${{ secrets.SAMPLE_CREDS.clientId }}
+          SUPER_SECRET: ${{ secrets.SAMPLE_CREDS }}
         with:
           azcliversion: 2.0.72
           inlineScript: |
