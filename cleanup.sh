@@ -1,6 +1,6 @@
 #!/bin/sh
 echo $1
 # apt install jq
-# jq .subscriptionId $1
+jq .resource_group .cloud/.azure/test/workspace.json
 # az extension add -n azure-cli-ml
-# az ml workspace list --resource-group ashkuma_devtesting
+# az ml workspace list --resource-group 
