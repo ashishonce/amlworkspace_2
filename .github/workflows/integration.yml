@@ -16,7 +16,7 @@ jobs:
         uses: ./
         with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-          parameters_file: "workspace.json"
+          parameters_file: "test/workspace.json"
       
       - name: Azure Login
         uses: azure/login@v1
