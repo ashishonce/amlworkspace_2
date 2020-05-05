@@ -1,16 +1,13 @@
 #!/bin/sh
 #extract the resource group
-#rg=$(jq .resource_group .cloud/.azure/test/workspace.json)
-rg=ashkuma_devtesting
-ws=ashkumamlworkspace
+rg=$(jq .resource_group .cloud/.azure/test/workspace.json)
+ws=$(jq .name .cloud/.azure/test/workspace.json)
+rg2=ashkuma_devtesting
+ws2=ashkumamlworkspace
 echo $ws
 echo $rg
 echo $1
-IFS=','
-jq -n "$1" | jq ."clientId"
-# dt="$(echo "$1"|tr -d '\r')"
-# dt="$(echo "$dt"|tr -d '\n')"
-# jq -n "$dt"
-# jq -n "$dt" | jq ."clientId"
-# az extension add -n azure-cli-ml
-# az ml workspace delete --subscription $sid --resource-group $rg --workspace-name $ws
+sid=jq -n "$1" | jq ."subscriptionId"
+echo $sid
+az extension add -n azure-cli-ml
+az ml workspace delete --subscription $sid --resource-group $rg --workspace-name $ws
