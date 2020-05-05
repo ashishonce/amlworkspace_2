@@ -5,8 +5,8 @@ const eventPayload = require(process.env.GITHUB_EVENT_PATH);
 
 try {
 
-    let creds = require(process.env.CREDS);
-    let secrets = new SecretParser(creds, FormatType.JSON);
+    console.log(process.env.CREDS);
+    let secrets = new SecretParser(process.env.CREDS, FormatType.JSON);
     let servicePrincipalId = secrets.getSecret("$.clientId", false);
     let servicePrincipalKey = secrets.getSecret("$.clientSecret", true);
 } catch (error) {
