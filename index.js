@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-
+import { FormatType, SecretParser } from 'actions-secret-parser';
 const eventPayload = require(process.env.GITHUB_EVENT_PATH);
 
 try {
