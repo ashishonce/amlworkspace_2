@@ -6,6 +6,8 @@ rg=ashkuma_devtesting
 ws=ashkumamlworkspace
 echo $ws
 echo $rg
-jq -n "$1" | jq ."clientId"
+dt="$(echo "$1"|tr -d '\r')"
+dt="$(echo "$dt"|tr -d '\n')"
+jq -n "$dt" | jq ."clientId"
 # az extension add -n azure-cli-ml
 # az ml workspace delete --subscription $sid --resource-group $rg --workspace-name $ws
