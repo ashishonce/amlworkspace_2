@@ -28,4 +28,4 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
-            chmod +x $GITHUB_WORKSPACE/cleanup.sh
+            chmod +x $GITHUB_WORKSPACE/cleanup.sh ${{ parseJSON(${{secrets.AZURE_CREDENTIALS}}).subscriptionId }}
