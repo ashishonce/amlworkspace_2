@@ -31,4 +31,4 @@ jobs:
           azcliversion: 2.0.72
           inlineScript: |
             chmod +x $GITHUB_WORKSPACE/cleanup.sh
-            $GITHUB_WORKSPACE/cleanup.sh "$env:SUPER_SECRET"
+            $GITHUB_WORKSPACE/cleanup.sh "$SUPER_SECRET"
