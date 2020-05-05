@@ -10,13 +10,13 @@ jobs:
         with:
           ref: ${{github.ref}}
 
-      # connect to above created workspace
-      - name: Connect Workspace
-        id: ws_connect
-        uses: ./
-        with:
-          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-          parameters_file: "test/workspace.json"
+      # # connect to above created workspace
+      # - name: Connect Workspace
+      #   id: ws_connect
+      #   uses: ./
+      #   with:
+      #     azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+      #     parameters_file: "test/workspace.json"
       
       - name: Azure Login
         uses: azure/login@v1
@@ -28,4 +28,4 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
-            chmod +x $GITHUB_WORKSPACE/cleanup.sh ${{ parseJSON(${{secrets.AZURE_CREDENTIALS}}).subscriptionId }}
+            chmod +x $GITHUB_WORKSPACE/cleanup.sh ${{secrets.AZURE_CREDENTIALS}}
