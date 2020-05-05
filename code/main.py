@@ -54,7 +54,7 @@ def main():
         service_principal_password=azure_credentials.get("clientSecret", "")
     )
     try:
-        print("::debug::Loading existing Workspace")
+        print("Loading existing Workspace")
         # Default workspace and resource group name
         repository_name = os.environ.get("GITHUB_REPOSITORY").split("/")[-1]
 
@@ -64,7 +64,7 @@ def main():
             resource_group=parameters.get("resource_group", repository_name),
             auth=sp_auth
         )
-        print("::debug::Successfully loaded existing Workspace")
+        print("Successfully loaded existing Workspace")
     except AuthenticationException as exception:
         print(f"::error::Could not retrieve user token. Please paste output of `az ad sp create-for-rbac --name <your-sp-name> --role contributor --scopes /subscriptions/<your-subscriptionId>/resourceGroups/<your-rg> --sdk-auth` as value of secret variable: AZURE_CREDENTIALS: {exception}")
         raise AuthenticationException
