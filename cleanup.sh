@@ -6,8 +6,8 @@ rg=ashkuma_devtesting
 ws=ashkumamlworkspace
 echo $ws
 echo $rg
-echo $1
-jq -n $1 | jq ."clientId"
+echo "$1"
+jq -n "$1" | jq ."clientId"
 # dt="$(echo "$1"|tr -d '\r')"
 # dt="$(echo "$dt"|tr -d '\n')"
 # jq -n "$dt"
