@@ -1,8 +1,7 @@
 #!/bin/sh
-sid= $1
-echo "$1"
+sid=$1
+echo "$sid"
 #extract the resource group
-rg = jq .resource_group .cloud/.azure/test/workspace.json
-echo "$rg"
+rg=jq .resource_group /.cloud/.azure/test/workspace.json
 az extension add -n azure-cli-ml
 az ml workspace list --resource-group "$rg"
