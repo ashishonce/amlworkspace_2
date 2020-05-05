@@ -28,7 +28,7 @@ jobs:
           secret-value: ${{ secrets.SAMPLE_CREDS }}
       - name: secretBash
         run: |
-          jq .SAMPLE_CREDS test.json
+          jq "test.json"
       
       # connect ws
       # - name: Connect Workspace
