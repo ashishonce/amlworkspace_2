@@ -12,7 +12,6 @@ jobs:
 
       # connect to above created workspace
       - name: Connect Workspace
-        if: steps.ws_create.outputs.status == 'success'
         id: ws_connect
         uses: ./
         with:
