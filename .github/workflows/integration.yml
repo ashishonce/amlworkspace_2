@@ -26,7 +26,7 @@ jobs:
       - name: Azure CLI script
         uses: azure/CLI@v1
         env:
-          SUPER_SECRET: ${{ secrets.AZURE_CREDENTIALS_FAKE }}
+          SUPER_SECRET: ${{ secrets.AZURE_CREDENTIALS }}
         with:
           azcliversion: 2.0.72
           inlineScript: |
