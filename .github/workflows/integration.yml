@@ -14,8 +14,8 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-          const core = require('@actions/core');
-          core.setOutput('testKey', 'TestValue');
+            const core = require('@actions/core');
+            core.setOutput('testKey', 'TestValue');
 
       # connect ws
       # - name: Connect Workspace
