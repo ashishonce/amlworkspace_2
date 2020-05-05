@@ -1,13 +1,14 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
+const eventPayload = require(process.env.GITHUB_EVENT_PATH);
+
 try {
 
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+    let creds = core.getInput('creds', { required: true });
+    let secrets = new SecretParser(creds, FormatType.JSON);
+    let servicePrincipalId = secrets.getSecret("$.clientId", false);
+    let servicePrincipalKey = secrets.getSecret("$.clientSecret", true);
 } catch (error) {
   core.setFailed(error.message);
 }
