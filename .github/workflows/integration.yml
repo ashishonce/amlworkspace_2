@@ -10,7 +10,7 @@ jobs:
         with:
           ref: ${{github.ref}}
 
-      # connect or  workspace
+      # connect
       - name: Connect Workspace
         id: ws_connect
         uses: ./
