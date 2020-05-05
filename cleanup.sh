@@ -7,9 +7,9 @@ ws=ashkumamlworkspace
 echo $ws
 echo $rg
 echo $1
-dt="$(echo "$1"|tr -d '\r')"
-dt="$(echo "$dt"|tr -d '\n')"
-jq -n "$dt"
+# dt="$(echo "$1"|tr -d '\r')"
+# dt="$(echo "$dt"|tr -d '\n')"
+# jq -n "$dt"
 # jq -n "$dt" | jq ."clientId"
 # az extension add -n azure-cli-ml
 # az ml workspace delete --subscription $sid --resource-group $rg --workspace-name $ws
