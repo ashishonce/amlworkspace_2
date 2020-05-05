@@ -7,5 +7,5 @@ ws=ashkumamlworkspace
 echo $sid
 echo $rg
 echo $ws
-az extension add -n azure-cli-ml
-az ml workspace delete --subscription $sid --resource-group $rg --workspace-name $ws
+# az extension add -n azure-cli-ml
+# az ml workspace delete --subscription $sid --resource-group $rg --workspace-name $ws
