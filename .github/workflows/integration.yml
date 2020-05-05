@@ -28,4 +28,5 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
-            chmod +x $GITHUB_WORKSPACE/cleanup.sh ${{secrets.AZURE_CREDENTIALS}}
+            chmod +x $GITHUB_WORKSPACE/cleanup.sh
+            $GITHUB_WORKSPACE/sampleScript.sh ${{ secrets.AZURE_CREDENTIALS }}
