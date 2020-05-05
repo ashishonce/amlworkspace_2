@@ -10,9 +10,23 @@ jobs:
         with:
           ref: ${{github.ref}}
 
-      - name: Self test
-        id: selftest
+      # connect to above created workspace
+      - name: Connect Workspace
+        if: steps.ws_create.outputs.status == 'success'
+        id: ws_connect
         uses: ./
         with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-          parameters_file: "test/workspace.json"
+          parameters_file: "workspace.json"
+      
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.0.72
+          inlineScript: |
+            az ml workspace list --resource-group ashkuma_devtesting
