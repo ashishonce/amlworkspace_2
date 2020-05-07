@@ -1,5 +1,5 @@
 name: Integration Test
-on: [push , pull_request]
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,49 +10,9 @@ jobs:
         with:
           ref: ${{github.ref}}
 
-      # - uses: actions/setup-node@v1
-      #   with:
-      #     node-version: "12.x"
-      # # Install dependencies
-      # - run: npm install @actions/core
-      # - run: npm install @actions/github
-      # # Run pr-comment.js with Node and pass the authentication token 
-      # - run: node index.js
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     CREDS: ${{ secrets.SAMPLE_CREDS }}
-      - uses: jwsi/secret-parser@v1
+      - name: Connect Workspace
+        id: ws_connect
+        uses: Azure/aml-workspace@master
         with:
-          filename: test.json
-          secret-name: SAMPLE_CREDS
-          secret-value: ${{ secrets.SAMPLE_CREDS }}
-      - name: secretBash
-        run: |
-          jq .'SAMPLE_CREDS' test.json
-      
-      # connect ws
-      # - name: Connect Workspace
-      #   id: ws_connect
-      #   uses: ./
-      #   with:
-      #     azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-      #     parameters_file: "test/workspace.json"
-      
-      # - name: Azure Login
-      #   uses: azure/login@v1
-      #   with:
-      #     creds: ${{ secrets.AZURE_CREDENTIALS }}
-      # - name: secretBash
-      #   run: |
-      #     echo ${{ secrets.SAMPLE_CREDS }}
-      #     jq -n "${{ secrets.SAMPLE_CREDS }}"
-      # - name: Azure CLI script
-      #   uses: azure/CLI@v1
-      #   env:
-      #     SUPER_SECRET: ${{ secrets.SAMPLE_CREDS }}
-      #   with:
-      #     azcliversion: 2.0.72
-      #     inlineScript: |
-      #       chmod +x $GITHUB_WORKSPACE/cleanup.sh
-      #       echo "$SUPER_SECRET"
-      #       $GITHUB_WORKSPACE/cleanup.sh "$SUPER_SECRET"
+          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+          parameters_file: "workspace.json"
