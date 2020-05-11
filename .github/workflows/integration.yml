@@ -10,9 +10,7 @@ jobs:
         with:
           ref: ${{github.ref}}
 
-      - name: Connect Workspace
-        id: ws_connect
-        uses: Azure/aml-workspace@master
-        with:
-          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-          parameters_file: "workspace.json"
+      - name: secretBash	
+        run: |
+          sed -i -e 's/TESTSERVICENAME/'$1'/g' .cloud/.azure/test/test_deploy.json
+          
