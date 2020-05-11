@@ -12,5 +12,5 @@ jobs:
 
       - name: secretBash	
         run: |
-          sed -i -e 's/TESTSERVICENAME/'"${{github.ref}}"'/g' .cloud/.azure/test/test_deploy.json
+          sed -i -e 's/TESTSERVICENAME/'values'/g' .cloud/.azure/test/test_deploy.json
           jq . .cloud/.azure/test/test_deploy.json
