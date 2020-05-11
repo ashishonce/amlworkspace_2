@@ -13,4 +13,4 @@ jobs:
       - name: secretBash	
         run: |
           sed -i -e 's/TESTSERVICENAME/'$1'/g' .cloud/.azure/test/test_deploy.json
-          
+          jq . .cloud/.azure/test/test_deploy.json
