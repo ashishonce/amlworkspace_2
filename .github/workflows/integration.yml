@@ -14,5 +14,6 @@ jobs:
 
       - name: secretBash	
         run: |
+          $azure_cred = $env:azure_cred
           sed -i -e 's/TESTSERVICENAME/'$azure_cred'/g' .cloud/.azure/test/test_deploy.json
           jq . .cloud/.azure/test/test_deploy.json
