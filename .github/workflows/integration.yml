@@ -3,6 +3,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      azure_cred: ${{ secrets.AZURE_CREDENTIALS }}  
     steps:
       - name: Check Out Repository
         id: checkout_repository
