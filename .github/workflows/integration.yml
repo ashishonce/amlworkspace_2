@@ -11,9 +11,20 @@ jobs:
         uses: actions/checkout@master
         with:
           ref: ${{github.ref}}
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+      - name: Azure CLI script
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.0.72
+          inlineScript: |
+            az account show
 
-      - name: secretBash	
-        run: |
-          $azure_cred = $env:azure_cred
-          sed -i -e 's/TESTSERVICENAME/'$azure_cred'/g' .cloud/.azure/test/test_deploy.json
-          jq . .cloud/.azure/test/test_deploy.json
+#       - name: secretBash	
+#         run: |
+#           $azure_cred = $env:azure_cred
+#           sed -i -e 's/TESTSERVICENAME/'$azure_cred'/g' .cloud/.azure/test/test_deploy.json
+#           jq . .cloud/.azure/test/test_deploy.json
